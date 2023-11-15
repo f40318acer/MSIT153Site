@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "hw";
+}
+<table id="tableEmployee" class="table table-bordered  table-hover">
+    <tbody></tbody>
+</table>
+
+@section Scripts
+    {
+    <script src="~/datas/travel.js"></script>
+    <script>
+
+        const datas = spots.CommonFormat.Section.map(x => {
+            const { stitle, xbody, file } = x;
+            if (x.file){
+                if (x.file.img){
+                    if (x.file.img[0]){
+                        if (x.file.img[0].text){
+                            return(
+                                `
+                                            <div class="card" style="width: 18rem;">
+                                            <img src="${file.img[0].text}" class="card-img-top" alt="沒有圖片">
+                                            <div class="card-body">
+                                                        <h5 class="card-title">${stitle}</h5>
+                                                        <p class="card-text">${xbody}</p>
+                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            </div>
+                                        </div>
+                                 `
+                            )
+                        }
+                    }
+                }
+            }
+        })
+        document.querySelector('#tableEmployee>tbody').innerHTML = datas.join("");
+    </script>
+}
