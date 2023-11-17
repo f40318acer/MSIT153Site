@@ -30,20 +30,21 @@
 
         
             //步驟二對伺服器發出要求 > controller/action
-        //@Url.Action("Index","api")
-        //@Url.Content("~/api/index")
+            //@Url.Action("Index","api")//隨者時間地點改變，執行後會去抓到正確的地方。
+            //@Url.Content("~/api/index")
              //   xhr.open('GET', '/api/Index?name=Jack&age=30');
+            //xhr.open('GET', '/@Url.Content("~/api/index")?name=Jack&age=30');
 
             xhr.addEventListener('loadstart', () => {
-                theDiv.innerHTML += "Ajax開始<br />"
+                theDiv.innerHTML += "Ajax開始<br />"//div 出現ajax開始
                 imgLoading.style.display = "inline";
-                btn.setAttribute('disabled', 'disabled');
-                btn.innerHTML = "Loading...";
+                btn.setAttribute('disabled', 'disabled'); //點擊完不能按
+                btn.innerHTML = "Loading...";//ajax按鈕變成Loading....
 
             })
             xhr.addEventListener('loadend', () => {
-                theDiv.innerHTML += "Ajax結束<br />"
-                imgLoading.style.display = "none";
+                theDiv.innerHTML += "Ajax結束<br />"//div 出現ajax結束
+                imgLoading.style.display = "none";//結束完圖片不見
                 btn.removeAttribute("disabled");
                 btn.innerHTML = "Ajax Start";
 
@@ -69,8 +70,8 @@
 
 
            xhr.open('GET', '@Url.Content("~/api/index")?name=Jack&age=30');
-           xhr.timeout = 3000; //要設定在open()方法之後
-            xhr.send();
+           //xhr.timeout = 3000; //要設定在open()方法之後
+           xhr.send();
 
           
             
